@@ -1,0 +1,140 @@
+﻿
+//	================================================================================
+//	Variables.
+//	================================================================================
+
+$total-cols: 12;
+$media-tablet: "only screen and (max-width: 1250px)";
+$media-mobile: "only screen and (max-width: 769px)";
+
+
+
+
+//	================================================================================
+//	Fluid grid styles.
+//	================================================================================
+
+.flg-row {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+	display: block;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+
+	&:after {
+		clear: both;
+		content: ' ';
+		display: block;
+		height: 1px;
+		margin: -1px 0 0 -1px;
+		width: 1px;
+	}
+}
+.flg {
+	-webkit-box-sizing: border-box;
+	   -moz-box-sizing: border-box;
+			box-sizing: border-box;
+
+	display: block;
+	float: left;
+}
+
+@mixin flg-columns($cols, $screen:'') {
+
+	@for $i from 1 through $cols {
+
+		// Calculate the width.
+		$flg-width: 100% * ($i / $cols);
+		.flg-#{$screen}#{$i}-#{$cols} { width: $flg-width; }
+		.flg-#{$screen}#{$i}-#{$cols}-max { width: $flg-width !important; }
+
+		// Calculate offset classes.
+		@if $i < $cols {
+			.flg-#{$screen}ml-#{$i}-#{$cols} { margin-left: $flg-width; }
+			.flg-#{$screen}ml-#{$i}-#{$cols}-max { margin-left: $flg-width !important; }
+		}
+	}
+}
+
+// Create grid columns.
+@for $i from 1 through $total-cols {
+	@include flg-columns($i);
+}
+
+.flg-desk-hide 		{ display: none; }
+.flg-desk-hide-max 	{ display: none !important; }
+.flg-desk-show 		{ display: block; }
+.flg-desk-show-max 	{ display: block !important; }
+
+.flg-mob-only-hide,
+.flg-tab-only-hide,
+.flg-desk-only-show { display: inherit !important; }
+
+.flg-mob-only-show,
+.flg-tab-only-show,
+.flg-desk-only-hide { display: none !important; }
+
+
+
+
+//	================================================================================
+//	Responsive layouts for tablet.
+//	================================================================================
+
+@media #{$media-tablet} {
+
+	@for $i from 1 through $total-cols {
+		@include flg-columns($i, 'tab-');
+	}
+
+	.flg-tab-ml-0 {
+		margin-left: 0;
+	}
+
+	.flg-tab-hide 		{ display: none; }
+	.flg-tab-hide-max 	{ display: none !important; }
+	.flg-tab-show 		{ display: block; }
+	.flg-tab-show-max 	{ display: block !important; }
+
+	.flg-mob-only-hide,
+	.flg-tab-only-show,
+	.flg-desk-only-hide { display: inherit !important; }
+
+	.flg-mob-only-show,
+	.flg-tab-only-hide,
+	.flg-desk-only-show { display: none !important; }
+}
+
+
+
+
+//	================================================================================
+//	Responsive layouts for mobile.
+//	================================================================================
+
+@media #{$media-mobile} {
+
+	@for $i from 1 through $total-cols {
+		@include flg-columns($i, 'mob-');
+	}
+
+	.flg-mob-ml-0 {
+		margin-left: 0;
+	}
+
+	.flg-mob-hide 		{ display: none; }
+	.flg-mob-hide-max 	{ display: none !important; }
+	.flg-mob-show 		{ display: block; }
+	.flg-mob-show-max 	{ display: block !important; }
+
+	.flg-mob-only-show,
+	.flg-tab-only-hide,
+	.flg-desk-only-hide { display: inherit !important; }
+
+	.flg-mob-only-hide,
+	.flg-tab-only-show,
+	.flg-desk-only-show { display: none !important; }
+}
