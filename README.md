@@ -1,9 +1,10 @@
 # Flamingo CSS
 
-**Flamingo CSS** is a simple responsive fluid grid framework. It has two responsive breakpoints for tablet (1250px)
-and mobile (770px). The CSS grid has 12 columns rendered by default. SASS variables are easily updated to set the number of column classes rendered in the CSS or to adjust the responsive breakpoints.
+**Flamingo CSS** is a simple responsive fluid grid framework with no gutters. It has two responsive breakpoints for tablet (1250px) and mobile (770px). The CSS grid has 12 columns rendered by default. SASS variables are easily updated to set the number of column classes rendered in the CSS or to adjust the responsive breakpoints.
 
 ## Example usage
+
+### Rows and Containers
 
 Grid containers should be wrapped in `.flg-row`. 
 
@@ -18,6 +19,24 @@ For tablet or mobile widths, include the `tab-` or `mob-` identifiers. eg, `.flg
 </div>
 ```
 
+### Offset Classes
+
+To create negative space between columns, add the `ml-` offset class. The mnemonic here is `ml-` stands for `margin-left`. To create a container on the right 1/4 side of the screen, use the `.flg-ml-3-4` class to push the column over. 
+
+```
+<div class="flg-row">
+  <div class="flg flg-1-4 flg-ml-3-4">[ ... ]</div>
+</div>
+```
+
+The offset classes are also available for tablet and mobile resolutions. To remove the left margin spacing for responsive, use the `.flg-tab-ml-0` and `.flg-mob-ml-0` classes.
+
+```
+<div class="flg-row">
+  <div class="flg flg-1-4 flg-ml-3-4 flg-mob-1-1 flg-mob-ml-0">[ ... ]</div>
+</div>
+```
+
 ## Browser Compatibility
 
 Flamingo uses the `box-sizing` CSS property, which is not available on all browsers. For compatibility matrix, see
@@ -27,7 +46,7 @@ Flamingo uses the `box-sizing` CSS property, which is not available on all brows
 
 The framework can be customized for a smaller footprint if not all 12 columns are desired or if more than 12 columns are required for your layout. To do this, you will need to have SASS gem running locally. For details on how to do this, see the [Compass instructions](http://compass-style.org/install/). 
 
-* With Compass/SASS is running, update the `$total-cols` variable in `flg.scss` to the desired number of grid columns. 
+* With Compass/SASS installed, update the `$total-cols` variable in `flg.scss` to the desired number of grid columns. 
 * Once you have made changes to `flg.scss`, open a command prompt and cd to the repo on your local workstation and render the CSS using `compass compile`:
 ```
 > cd \Source\Github\FlamingoCSS
