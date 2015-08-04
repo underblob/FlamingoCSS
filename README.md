@@ -39,4 +39,16 @@ The framework can be customized for a smaller footprint if not all 12 columns ar
 
 To update the responsive breakpoints, edit the `$media-tablet` and `$media-mobile` variables and then compile the CSS using `compass compile` as described above.
 
-If you don't want to spin up SASS on your local workstation, you can still change the responsive breakpoints in the CSS file. Just look for the two big comment blocks that start the tablet and mobile style sections. Edit the `@media` queries directly beneath them.
+If you don't want to spin up SASS on your local workstation, you can change the responsive breakpoints in the CSS file. Just look for the two big comment blocks that start the tablet and mobile style sections and edit the `@media` queries directly beneath them: 
+```
+/*	================================================================================ */
+/*	Responsive layouts for tablet. */
+/*	================================================================================ */
+@media only screen and (max-width: 1250px) {
+[ ... ]
+/*	================================================================================ */
+/*	Responsive layouts for mobile. */
+/*	================================================================================ */
+@media only screen and (max-width: 769px) { 
+[ ... ]
+```
