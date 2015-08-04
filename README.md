@@ -25,3 +25,18 @@ For tablet or mobile widths, include the `tab-` or `mob-` identifiers. eg, `.flg
 
 Flamingo uses the `box-sizing` CSS property, which is not available on all browsers. For compatibility matrix, see
 [Can I use](http://caniuse.com/#feat=css3-boxsizing)
+
+## Customizing the Framework
+
+The framework can be customized for a smaller footprint if not all 12 columns are desired or if more than 12 columns are required for your layout. To do this, you will need to have SASS gem running locally. For details on how to do this, see the [Compass instructions](http://compass-style.org/install/). 
+
+* With Compass/SASS is running, update the `$total-cols` variable in `flg.scss` to the desired number of grid columns. 
+* Once you have made changes to `flg.scss`, open a command prompt and cd to the repo on your local workstation and render the CSS using `compass compile`:
+```
+> cd \Source\Github\FlamingoCSS
+> compass compile
+```
+
+To update the responsive breakpoints, edit the `$media-tablet` and `$media-mobile` variables and then compile the CSS using `compass compile` as described above.
+
+If you don't want to spin up SASS on your local workstation, you can still change the responsive breakpoints in the CSS file. Just look for the two big comment blocks that start the tablet and mobile style sections. Edit the `@media` queries directly beneath them.
